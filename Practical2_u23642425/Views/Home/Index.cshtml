@@ -1,0 +1,63 @@
+﻿
+
+@model List<Practical2_u23642425.Models.PersonModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!--Add Container-->
+<div class="container">
+    <!--Row 1-->
+    <div class="row">
+        <div class="col-4 text-start">
+            <h2>List of People</h2>
+        </div>
+    </div>
+    <!--Row 2-->
+    <div class="row">
+        <div class="col-12">
+            <!--Add our Table-->
+            <table class=" table table-active">
+                <thead>
+                    <tr>
+                        <th>Student Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email Address</th>
+                        <th>Link to personal page</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Checking  for null list-->
+                    @if (Model.Count > 0)
+                    {
+
+                        foreach (var person in Model) // loop throuygh data object in Model list
+                        {
+                            <tr>
+                                <td>@person.StudentNumber</td>
+                                <td>@person.FirstName</td>
+                                <td>@person.LastName</td>
+                                <td>@person.EmailAddress</td>
+                                <td>
+                                    <button class="btn btn-success" onclick="window.location.href ='@Url.Content(person.MyLink)'">
+                                        LINK
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        // idf list is empty
+                        <tr class="text-center">
+                            <td colspan="5">
+                                <h4 class="text-danger"> No Data Received</h4>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

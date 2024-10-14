@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<h5>Choose a type of shape to display</h5>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="rectangle">
+    <label class="form-check-label" for="rectangle">
+        Rectangle
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="circle" checked>
+    <label class="form-check-label" for="circle">
+        Circle
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="ellipse">
+    <label class="form-check-label" for="ellipse">
+        Ellipse
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="flexRadioDefault" id="triangle" checked>
+    <label class="form-check-label" for="triangle">
+        Traingle
+    </label>
+</div>
+<button type="submit" id="submit">Submit</button>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#submit").on("click", function () {
+                var rectangle = document.querySelector("#rectangle");
+                var circle = document.querySelector("#circle");
+                var ellipse = document.querySelector("#ellipse");
+                var triangle = document.querySelector("#triangle");
+
+                if (rectangle.checked) {
+                    window.location.href = `@Url.Action("Rectangle","Home")`;
+                }
+                if (circle.checked) {
+                    window.location.href = `@Url.Action("Circle","Home")`;
+                }
+                if (ellipse.checked) {
+                    window.location.href = `@Url.Action("Ellipse","Home")`;
+                }
+                if (triangle.checked) {
+                    window.location.href = `@Url.Action("Triangle","Home")`;
+                }
+            });
+        });
+    </script>
+    } 

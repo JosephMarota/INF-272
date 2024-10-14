@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Add new Shape";
+}
+
+<h2>Add Shape</h2>
+
+@using (Html.BeginForm("Circle", "Home", FormMethod.Post))
+{
+    
+    <div class="form-group">
+        <label for="desc">Description</label>
+        <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="fill">Fill</label>
+        <input type="color" id="fill" name="fill"/>
+    </div>
+    <div class="form-group">
+        <label for="outline">Stroke Colour</label>
+        <input type="color" id="outline" name="outline"/>
+    </div>
+    <div class="form-group">
+        <label for="stroke">Stroke Width</label>
+        <input type="number" min="0" max="3" class="form-control" name="stroke" id="stroke">
+    </div>
+
+    <div class="form-group">
+        <label for="xCoord">X Coordinate</label>
+        <input type="number" min="0" max="449" class="form-control" name="xCoord" id="xCoord">
+    </div>
+    <div class="form-group">
+        <label for="yCoord">Y Coordinate</label>
+        <input type="number" min="0" max="399" class="form-control" name="yCoord" id="yCoord">
+    </div>
+    <!-- Fields for circle shape -->
+    <div class="form-group circ">
+        <label for="radius">Radius</label>
+        <input type="number" min="0" max="100" class="form-control" name="radius" id="radius">
+    </div>
+    
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+}
+
+@section Scripts {
+
+    <script></script>
+
+}
+
+
+

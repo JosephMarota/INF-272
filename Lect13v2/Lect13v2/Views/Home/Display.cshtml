@@ -1,0 +1,13 @@
+﻿@model Lect13v1.Models.Shape
+
+@{
+    ViewBag.Title = "Display";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <h4>@Model.Description</h4>
+    <h6>Area: @Model.getArea()</h6>
+    @Html.Raw(Model.getSVG())
+</div>
+

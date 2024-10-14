@@ -1,0 +1,110 @@
+[
+  {
+    "Id": 1,
+    "Name": "Tony Stark (Iron Man)",
+    "Age": 53,
+    "Birthday": "May 29",
+    "Height": "185cm",
+    "Image": "images/tony-stark-iron-man.webp",
+    "Alive": false
+  },
+  {
+    "Id": 2,
+    "Name": "Steve Rogers (Captain America)",
+    "Age": 34,
+    "Birthday": "July 4",
+    "Height": "185cm",
+    "Image": "images/steve-rogers.webp",
+    "Alive": false
+  },
+  {
+    "Id": 3,
+    "Name": "Bruce Banner (The Hulk)",
+    "Age": 54,
+    "Birthday": "December 18",
+    "Height": "250cm",
+    "Image": "images/The-Incredible-Hulk.webp",
+    "Alive": true
+  },
+  {
+    "Id": 4,
+    "Name": "Thor",
+    "Age": 1059,
+    "Birthday": null,
+    "Height": "192cm",
+    "Image": "images/thor-lightning.webp",
+    "Alive": true
+  },
+  {
+    "Id": 5,
+    "Name": "Natasha Romanoff (Black Widow)",
+    "Age": 39,
+    "Birthday": "December 3",
+    "Height": "164cm",
+    "Image": "images/black-widow-1.webp",
+    "Alive": true
+  },
+  {
+    "Id": 6,
+    "Name": "Peter Parker (Spider-Man)",
+    "Age": 19,
+    "Birthday": "August 10",
+    "Height": "170cm",
+    "Image": "images/peter-parker-Cropped.webp",
+    "Alive": true
+  },
+  {
+    "Id": 7,
+    "Name": "Clint Barton (Hawkeye)",
+    "Age": 53,
+    "Birthday": "June 18",
+    "Height": "173cm",
+    "Image": "images/hawkeye.webp",
+    "Alive": true
+  },
+  {
+    "Id": 8,
+    "Name": "Colonel James 'Rhodey' Rhodes (War Machine)",
+    "Age": 55,
+    "Birthday": "October 6",
+    "Height": "173cm",
+    "Image": "images/Don-cheadle-as-rhodey-Cropped.webp",
+    "Alive": true
+  },
+  {
+    "Id": 9,
+    "Name": "Samuel Thomas 'Sam' Wilson (Falcon/Captain America)",
+    "Age": 40,
+    "Birthday": "September 23",
+    "Height": "178cm",
+    "Image": "images/Anthony-Mackie-Captain-America-4.webp",
+    "Alive": true
+  },
+  {
+    "Id": 10,
+    "Name": "Wanda Maximoff (Scarlet Witch)",
+    "Age": 30,
+    "Birthday": "February 10",
+    "Height": "168cm",
+    "Image": "images/Wanda-Scarlet-Witch-Cropped.webp",
+    "Alive": true
+  },
+  {
+    "Id": 11,
+    "Name": "Vision",
+    "Age": 3,
+    "Birthday": "May 29",
+    "Height": "May",
+    "Image": "images/Vision-Civil-War-Cropped.webp",
+    "Alive": true
+  },
+  {
+    "Id": 12,
+    "Name": "Scott Lang (Ant-Man)",
+    "Age": null,
+    "Birthday": null,
+    "Height": "178cm",
+    "Image": "images/antman-and-the-wasp-marvel-4.webp",
+    "Alive": true
+  }
+]

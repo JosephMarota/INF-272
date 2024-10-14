@@ -1,0 +1,29 @@
+﻿body {
+    background-color: lightpink !important
+}
+
+.card {
+    border: 2px solid seagreen;
+}
+
+.image {
+    height: 90px;
+    width: 90px;
+}
+ .image:hover {
+        transform: rotateY(180deg);
+
+ }
+
+ #nevbar{
+     background-color:deeppink;
+     color: deeppink;
+ }
+#pics {
+    display: flex;
+    flex-direction: row; /* Aligns images horizontally */
+}
+
+    #pics img {
+        margin: 10px; /* Adds some space around each image */
+    }

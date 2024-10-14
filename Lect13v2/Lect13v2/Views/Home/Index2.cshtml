@@ -1,0 +1,23 @@
+﻿
+@model List<Lect13v1.Models.Shape>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h2>Shapes Lecture 13</h2>
+</div>
+
+<div class="row">
+    <a class="btn btn-primary pull-right" href="@Url.Action("Index","Home")">Add Shape</a>
+</div>
+@foreach (var shape in Model)
+{
+    <div class="row">
+        <h4>@shape.Description</h4>
+        <h6>Area: @shape.getArea()</h6>
+        @Html.Raw(shape.getSVG())
+    </div>
+}
+
+

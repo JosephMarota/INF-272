@@ -1,0 +1,214 @@
+﻿@model List<Practical2.Models.PersonModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="">
+            <h2 style="font-weight: bold; color: black; text-decoration:underline">List of Study Friends</h2>
+        </div>
+    </div>
+    <!--Row 2-->
+    <div class="row">
+        <div class="col-4 text-start">
+            <button class="btn btn-info btn-sm" onclick="window.location.href ='@Url.Action("Add","People")'">Create</button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3 text-start">
+            <input type="text" id="searchInput" onkeyup="searchNames()" placeholder="Search for Friends...">
+        </div>
+        <div class="col-3 text-start">
+            <button class="btn btn-info btn-sm" onclick="search()">Search</button>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="col-12">
+            <!--Add our Table-->
+
+
+            <table class="table" style="background-color: darkblue; color: white;" id="tablelist">
+                <thead>
+                    <tr>
+                        <th>Student Number</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email Address</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--Checking  for null list-->
+                    @if (Model.Count > 0)
+                    {
+                        foreach (var person in Model) // loop through data object in Model list
+                        {
+                            <tr>
+                                <td>@person.StudentNumber</td>
+                                <td>@person.FirstName</td>
+                                <td>@person.LastName</td>
+                                <td>@person.EmailAddress</td>
+                                <td>
+                                    <button class="btn btn-info" onclick="window.location.href ='@Url.Action("Delete","People", new { StudentNumber = person.StudentNumber })'">
+                                        Delete
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        // if list is empty
+                        <tr class="text-center">
+                            <td colspan="5">
+                                <h4 class="text-danger"> No Data Received</h4>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-4">
+            <button class="btn-info" type="button" id="save">Save to Local storage</button>
+        </div>
+        <div class="col-4">
+            <button class="btn-info" type="button" id="retrieve">Retreive from local Storage</button>
+        </div>
+        <div class="col-4">
+            <button class="btn-info" type="button" id="clear">Clear local storage</button>
+        </div>
+    </div>
+</div>
+
+<style>
+    .red-text {
+        color: red;
+    }
+</style>
+
+
+<!--The Search for my friend code-->
+<script>
+    function search() {
+        var searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
+        var table = document.getElementById('tablelist');
+        var rows = table.getElementsByTagName('tr');
+
+        for (var i = 0; i < rows.length; i++) {
+            var cells = rows[i].getElementsByTagName('td');
+            if (cells.length > 0) {
+                var firstName = cells[1].textContent.toLowerCase(); // Changed to cells[1] for first name
+                if (firstName.includes(searchTerm)) {
+                    rows[i].classList.add('red-text');
+                    (function (row) { // Using IIFE to create a new scope for each iteration
+                        setTimeout(function () {
+                            row.classList.remove('red-text');
+                        }, 3000);
+                    })(rows[i]);
+                }
+            }
+        }
+    }
+</script>
+
+
+<!--Code for the 3 button of Local storage-->
+@section Scripts
+{
+    <script>
+
+        // Event Lsitner to trigger when we press the save button
+
+        $('body').on('click', '#save', function () {
+
+            // Get body
+            var tableBody = document.querySelectorAll('table tbody');
+
+            var rows = [];
+            var people = [];
+
+            // Loop through body rows
+            tableBody.forEach(function (body) {
+                rows = body.children;
+            });
+
+            // Actually loop through body rows
+            for (var i = 0; i < rows.length; i++) {
+                var person = { studentNumber: "", firstName: "", lastName: "", emailAddress: "" };
+                person.studentNumber = rows[i].children[0].textContent;
+                person.firstName = rows[i].children[1].textContent;
+                person.lastName = rows[i].children[2].textContent;
+                person.emailAddress = rows[i].children[3].textContent;
+                people.push(person);
+            }
+
+            // Store in Local storage
+            localStorage.setItem("People", JSON.stringify(people));
+        });
+
+        // Event Lsitner to trigger when we press the save button
+
+        $('body').on('click', '#retrieve', function () {
+
+            // Fetches from ls
+            var rows = JSON.parse(localStorage.getItem("People"));
+
+            // Get body
+            var tableBody = document.querySelectorAll('table tbody');
+
+
+            // Clear Existing Items
+            tableBody.forEach(function (body) {
+                while (body.firstChild) {
+                    body.removeChild(body.firstChild);
+                }
+            });
+
+
+            // for each itm create new row and append
+            for (var i = 0; i < rows.length; i++) {
+
+                var table = document.querySelector('table');
+                var tableBody = table.querySelector('tbody');
+                var newRow = tableBody.insertRow();
+                var studentNumber = rows[i].studentNumber;
+
+                // Create cells
+                var cell1 = newRow.insertCell();
+                var cell2 = newRow.insertCell();
+                var cell3 = newRow.insertCell();
+                var cell4 = newRow.insertCell();
+                var cell5 = newRow.insertCell();
+
+                // Populate cells with data from rows
+                cell1.textContent = rows[i].studentNumber;
+                cell2.textContent = rows[i].firstName;
+                cell3.textContent = rows[i].lastName;
+                cell4.textContent = rows[i].emailAddress;
+
+                var deleteButton = document.createElement('button');
+                deleteButton.className = 'btn btn-success';
+                deleteButton.textContent = 'Delete';
+                deleteButton.onclick = function () {
+
+                    window.location.href = '@Url.Action("Delete","People", new { studentNumber = "__studentNumber__" })'.replace('__studentNumber__', studentNumber)
+                }
+                cell5.appendChild(deleteButton);
+            }
+        });
+
+        // Event Lsitner to trigger when we press the save button
+
+        $('body').on('click', '#clear', function () {
+            localStorage.clear();
+        });
+
+    </script>
+}
